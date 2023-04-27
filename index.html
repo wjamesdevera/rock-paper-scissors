@@ -5,71 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script>
-        const choices = ['rock', 'paper', 'scissors'];
-        const winningConditions = [
-            ['rock', 'scissors'],
-            ['paper', 'rock'],
-            ['scissor', 'paper'],
-        ];
-
-        function getComputerChoice() {
-            let i = Math.floor(Math.random() * 3);
-            return choices[i];
-        }
-
-        function playRound(playerSelection, computerSelection) {
-            let isWin = checkWin(playerSelection, computerSelection);
-            if (isWin === 'draw') {
-                alert(`Draw!`)
-            } else if (isWin === 'win') {
-                alert(`You Win! ${toTitleCase(playerSelection)} beats ${toTitleCase(computerSelection)}`);
-            } else {
-                alert(`You Lose! ${toTitleCase(computerSelection)} beats ${toTitleCase(playerSelection)}`);
-            }
-        }
-
-        function checkWin(playerSelection, computerSelection) {
-            if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
-                return 'draw';
-            }
-            for (let i = 0; i < winningConditions.length; i++) {
-                if (playerSelection.toLowerCase() == winningConditions[i][0] && computerSelection.toLowerCase() == winningConditions[i][1]) {
-                    return 'win';
-                }
-            }
-            return 'lose';
-        }
-
-        function game() {
-            const playerSelection = prompt("Choose (Rock, Paper, Scissors)")
-            const computerSelection = getComputerChoice();
-            alert(`Computer Selected: ${computerSelection}`);
-            playRound(playerSelection, computerSelection);
-        }
-
-        function validateChoice (choice) {
-            for (let i = 0; i < choices.length; i++) {
-                if (choice.toLowerCase() != choices[i].toLowerCase()) {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        function toTitleCase(str) {
-            return str.replace(
-                /\w\S*/g,
-                function(txt) {
-                return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-                }
-            );
-        }
-        while (1) {
-            game();
-        }
-    </script> 
+    <div class="container">
+        <div class="title-container">
+            <h1>Rock Paper Scissor!</h1>
+            <img class="button-image computer-choice" src="" alt="">
+        </div>
+        <div class="button-container">
+            <button class="rock selection-button" id="rock">
+                <img class="button-image" src="assets/noun-fist-477918.svg" alt="">
+            </button>
+            <button class="paper selection-button" id="paper">
+                <img class="button-image" src="assets/noun-wave-477912.svg" alt="">
+            </button>
+            <button class="scissors selection-button" id="scissors">
+                <img class="button-image" src="assets/noun-scissors-477919.svg" alt="">
+            </button>
+        </div>
+    </div>
 </body>
 </html>
